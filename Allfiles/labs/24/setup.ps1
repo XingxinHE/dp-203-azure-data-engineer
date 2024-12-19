@@ -47,7 +47,7 @@ foreach ($provider in $provider_list){
 }
 
 # Generate unique random suffix
-[string]$suffix =  -join ((48..57) + (97..122) | Get-Random -Count 7 | % {[char]$_})
+[string]$suffix = "azresearch"
 Write-Host "Your randomly-generated suffix for Azure resources is $suffix"
 
 # Prepare to deploy
@@ -116,7 +116,7 @@ while ($stop -ne 1){
         }
     }
     else {
-        $resourceGroupName = "dp203-$suffix"
+        $resourceGroupName = "resource-$suffix"
         Write-Host "Creating $resourceGroupName resource group ..."
         New-AzResourceGroup -Name $resourceGroupName -Location $Region | Out-Null
         $dbworkspace = "databricks$suffix"
